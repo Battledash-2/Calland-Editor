@@ -1,0 +1,113 @@
+#titlebar {
+    width: 100vw;
+    height: 50px;
+    background: #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    opacity: 0.989;
+}
+#titlebar #title {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
+#titlebar #files {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    font-family: monospace, Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#titlebar .file {
+    width: 130px;
+    height: 30px;
+    overflow-x: hidden;
+    display: grid;
+    align-content: center;
+    background: rgb(43, 42, 42);
+    margin-top: calc(50px - 36px);
+    color: #fff;
+    font-size: 20px;
+    padding-left: 5px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+#titlebar .file:hover {
+    background: rgb(110, 109, 109);
+}
+#titlebar #controls {
+    position: absolute;
+    right: 1px;
+}
+#titlebar button {
+    width: 50px;
+    height: 50px;
+    top: -50px;
+    right: -1px;
+    position: absolute;
+    border: 0;
+    background: #333;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bolder;
+    -webkit-app-region: no-drag;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+}
+#titlebar button:hover {
+    background: rgb(92, 91, 91);
+}
+#titlebar #close {
+    border-top-right-radius: 5px;
+    font-weight: normal;
+}
+#titlebar #close:hover {
+    background: rgb(218, 33, 33);
+}
+#titlebar #maximize {
+    right: 50px;
+}
+#titlebar #minimize {
+    right: 100px;
+}
+#titlebar #run {
+    right: 150px;
+}
+#titlebar #drag {
+    width: calc(100% - 150px);
+    -webkit-app-region: drag;
+    height: 49px;
+    top: 1px;
+}
+#titlebar #_fill {
+    width: calc(100% - 150px);
+    height: 1px;
+    top: 0;
+}
+#close_std {
+    font-size: 30px;
+    width: 50px;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    color: rgb(194, 87, 87);
+    background: transparent;
+    border: 0;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
+#stdout {
+    background: rgb(24, 24, 24);
+    opacity: 0.97;
+}
+#close_std:hover {
+    background: rgb(231, 45, 45);
+}
+#content {
+    overflow: hidden;
+}

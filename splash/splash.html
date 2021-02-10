@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-app-region: drag;
+        }
+        #holder {
+            width: 100vw;
+            height: calc(100vh - 5px);
+            background: rgb(37, 37, 37);
+            opacity: .97;
+        }
+        #content {
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        #holder {
+            text-align: center;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #fff;
+            font-weight: bolder;
+            margin-top: 5px;
+        }
+        #holder p {
+            color: #ff202f81;
+        }
+        #loading {
+            margin-top: 5px;
+            width: 100%;
+            height: 30px;
+            background: #333;
+        }
+        #bar {
+            width: calc(100% - 10px);
+            border: none;
+            border-radius: 5px;
+            left: 5px;
+            height: 27px;
+            top: calc(3px / 2);
+            position: relative;
+            background: rgb(29, 28, 28);
+        }
+        #loaded-bar {
+            width: 1px;
+            border: none;
+            border-radius: 5px;
+            height: calc(100% - 2px);
+            background: rgb(113, 206, 97);
+            left: 1px;
+            top: 1px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="holder">
+            <h1>Calland</h1>
+            <img draggable="false" src="../resources/icons/icon.svg">
+            <p>Loading...</p>
+            <div id="loading">
+                <div id="bar">
+                    <div id="loaded-bar"></div>
+                </div>
+            </div>
+            <script>
+                const e = require("electron");
+                const i = e.ipcRenderer;
+                const r = e.remote;
+                const w = r.getCurrentWindow();
+                w.setResizable(false);
+                let wi = 1;
+                const ulb = ()=>{
+                    let witem = document.querySelector("#loaded-bar");
+                    wi = wi + 60;
+                    witem.style.width = wi+"px";
+
+                    if(wi > (240-40)) {
+                        // "fake" loading is done
+                        
+                        i.send("load");
+                        console.log("good!");
+                    } else {
+                        setTimeout(ulb, 300);
+                    }
+                }
+                ulb();
+                const ld = document.querySelector("#holder p");
+                const load = ()=>{
+                    setTimeout(()=>{
+                        ld.innerText = "Loading.";
+                        setTimeout(()=>{
+                            ld.innerText = "Loading..";
+                            setTimeout(()=>{
+                                ld.innerText = "Loading...";
+                                setTimeout(()=>{
+                                    load();
+                                }, 390);
+                            }, 693);
+                        }, 904);
+                    }, 1000);
+                }
+                load();
+            </script>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <rect transform="matrix(1,0.4,-0.3,1.4,8.6,-39.5)" x="20.7" y="34.5" width="73" height="12" fill="rgb(58, 131, 143)"/>
+    <rect x="18.5" y="54.5" width="73" height="12" fill="rgb(58, 131, 143)" transform="matrix(1,-0.2,0.1,1.4,-9.7,-11.4)"/>
+    <rect x="25.6" y="27.5" width="73" height="12" fill="rgb(58, 143, 116)" transform="matrix(1,0.4,-0.3,1.4,8.6,-39.5)"/>
+    <rect x="23.9" y="48.3" width="72" height="12" fill="rgb(58, 143, 116)" transform="matrix(1,-0.2,0.1,1.4,-9.7,-11.4)"/>
+</svg>

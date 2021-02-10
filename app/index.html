@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+    <link rel="stylesheet" href="styles/index.html.css">
+    <link rel="stylesheet" href="titlebar/titlebar.css">
+    <link rel="stylesheet" href="editor/dracula.css">
+    <script src="index.html.js"></script>
+    <script src="editor/highlight.js"></script>
+    <script src="titlebar/titlebar.js" defer></script>
+    <script src="titlebar/run.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <div id="titlebar">
+            <div id="_fill"></div>
+            <div id="drag"></div>
+            <div id="title"><script>document.write(document.title);</script></div>
+            <div id="controls">
+                <button id="close">&times;</button>
+                <button id="maximize"><img id="mig" src="../resources/icons/minimized.svg"/></button>
+                <button id="minimize">-</button>
+                <button id="run"><img id="rig" src="../resources/icons/run.svg"></button>
+            </div>
+        </div>
+        <div id="holder">
+            <div class="editor language-bash"></div>
+        </div>
+        <div id="stdout">
+            <button id="close_std" title="Close Output">&times;</button>
+            <span id="stdout_content">
+                No Output.
+            </span>
+        </div>
+        <div id="editor_controls">
+            <div webkitdirectory directory id="execute_in_path">Select Path</div>
+            <p id="cpath">C:</p>
+            <script>setInterval(()=>{document.querySelector("#cpath").innerText = path;},200);</script>
+        </div>
+        <script type="module">
+            import { CodeJar } from 'https://medv.io/codejar/codejar.js';
+
+            const highlight = editor=>{
+                editor.textContent = editor.textContent;
+                hljs.highlightBlock(editor);
+            }
+            
+            const jar = CodeJar(document.querySelector('.editor'), highlight, {
+                tab: "    "
+            });
+        </script>
+    </div>
+</body>
+</html>
